@@ -103,24 +103,6 @@ public sealed class MenuControlTests
     }
 
     [StaFact]
-    public void headerControl_should_loadBeakerIcon_withoutChangingTitleSemantics()
-    {
-        var control = new HeaderControl
-        {
-            Title = "Dashboard",
-            SubTitle = "Laboratory Overview"
-        };
-
-        var icon = (Image)control.FindName("HeaderIcon");
-
-        Assert.NotNull(icon.Source);
-        Assert.Contains("Beaker/ic_fluent_beaker_24_filled.png", icon.Source.ToString());
-        Assert.Equal("icon-beaker-header", AutomationProperties.GetName(icon));
-        Assert.Equal("Dashboard", control.Title);
-        Assert.Equal("Laboratory Overview", control.SubTitle);
-    }
-
-    [StaFact]
     public void contentHost_should_loadDashboardView_when_mainWindow_is_created()
     {
         var window = new MainWindow();

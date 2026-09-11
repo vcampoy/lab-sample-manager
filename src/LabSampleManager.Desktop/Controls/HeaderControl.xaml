@@ -12,22 +12,11 @@
              VerticalContentAlignment="Center">
     <Grid Margin="30,18">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="HeaderIcon"
-               Grid.Column="0"
-               Width="28"
-               Height="28"
-               Margin="0,0,12,0"
-               Source="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Beaker/ic_fluent_beaker_24_filled.png"
-               Stretch="Uniform"
-               ToolTip="icon-beaker-header"
-               AutomationProperties.Name="icon-beaker-header" />
-
-        <StackPanel Grid.Column="1"
+        <StackPanel Grid.Column="0"
                     Margin="0,0,28,0"
                     VerticalAlignment="Center">
             <TextBlock Text="{Binding Title, ElementName=Root}"
@@ -44,7 +33,7 @@
                        TextWrapping="NoWrap" />
         </StackPanel>
 
-        <StackPanel Grid.Column="2"
+        <StackPanel Grid.Column="1"
                     Orientation="Horizontal"
                     VerticalAlignment="Center">
             <StackPanel Margin="0,0,16,0"
