@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WPF.UI" Version="3.4.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\roche-logo-blue.png" />
+    <Resource Include="Assets\Icons\Fluent\**\*.png" />
+    <None Include="Assets\Icons\Fluent\**\*.svg" />
+  </ItemGroup>
+
 </Project>

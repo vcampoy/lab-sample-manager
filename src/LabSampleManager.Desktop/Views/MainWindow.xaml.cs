@@ -1,4 +1,6 @@
-﻿using System.Windows;
+using System.Windows;
+using LabSampleManager.Desktop.Controls;
+using LabSampleManager.Desktop.Views;
 
 namespace LabSampleManager.Desktop
 {
@@ -10,6 +12,15 @@ namespace LabSampleManager.Desktop
         public MainWindow()
         {
             InitializeComponent();
+            ContentHost.Content = new DashboardView();
+        }
+
+        private void OnNavigationRequested(object sender, NavigationRequestedEventArgs args)
+        {
+            if (args.Destination == MenuDestination.Dashboard)
+            {
+                ContentHost.Content = new DashboardView();
+            }
         }
     }
 }

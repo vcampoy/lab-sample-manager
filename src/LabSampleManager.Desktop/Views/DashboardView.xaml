@@ -1,16 +1,14 @@
-﻿<Window x:Class="LabSampleManager.Desktop.Views.DashboardView"
+<UserControl x:Class="LabSampleManager.Desktop.Views.DashboardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LabSampleManager.Desktop.Views"
         xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
-        mc:Ignorable="d"
-        Title="DashboardView" Height="450" Width="800">
+        mc:Ignorable="d">
     <Grid>
         <controls:HeaderControl Title="Dashboard"
                                 SubTitle="Laboratory Overview"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
     </Grid>
-</Window>
+</UserControl>
