@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using LabSampleManager.Desktop.Controls;
+using LocalizationResources = LabSampleManager.Desktop.Properties.Resources;
 using LabSampleManager.Desktop.Views;
 
 namespace LabSampleManager.Desktop
@@ -29,7 +30,7 @@ namespace LabSampleManager.Desktop
                 MenuDestination.RegisterSample => new RegisterSampleView(),
                 MenuDestination.Processing => new ProcessingMonitor(),
                 MenuDestination.Validation => new ResultsValidationView(),
-                _ => throw new ArgumentOutOfRangeException(nameof(destination), destination, "Unsupported menu destination.")
+                _ => throw new ArgumentOutOfRangeException(nameof(destination), destination, LocalizationResources.UnsupportedMenuDestination)
             };
     }
 }

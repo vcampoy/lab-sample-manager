@@ -3,11 +3,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
+             xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties"
              Width="262"
              MinWidth="220"
-             HorizontalAlignment="Left"
-             Background="#F7F9FC">
+             HorizontalAlignment="Left">
     <UserControl.Resources>
+        <SolidColorBrush x:Key="MenuSeparatorBrush" Color="#E5EBF3" />
         <Style x:Key="MenuItemStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="#294265" />
             <Setter Property="FontSize" Value="16" />
@@ -56,88 +57,106 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <Border x:Name="MenuSurface"
+            Background="#F4F8FB"
+            BorderBrush="{StaticResource MenuSeparatorBrush}"
+            BorderThickness="0,0,1,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="24,28,24,36">
-            <StackPanel Orientation="Horizontal">
-                <Image x:Name="HeaderPlaceholder"
-                       Width="30"
-                       Height="30"
-                       Margin="0,0,14,0"
-                       Source="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Beaker/ic_fluent_beaker_24_filled.png"
-                       ToolTip="icon-lab-sample-manager"
-                       AutomationProperties.Name="icon-lab-sample-manager" />
-                <TextBlock Text="Lab Sample Manager"
-                           VerticalAlignment="Center"
-                           FontSize="17"
-                           FontWeight="SemiBold"
-                           Foreground="#142C4C" />
+            <StackPanel Grid.Row="0" Margin="24,28,24,36">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="HeaderPlaceholder"
+                           Width="30"
+                           Height="30"
+                           Margin="0,0,14,0"
+                           Source="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Beaker/ic_fluent_beaker_24_filled.png"
+                           ToolTip="{x:Static resources:Resources.ApplicationIconAccessibleName}"
+                           AutomationProperties.Name="{x:Static resources:Resources.ApplicationIconAccessibleName}" />
+                    <TextBlock Text="{x:Static resources:Resources.ApplicationName}"
+                               VerticalAlignment="Center"
+                               FontSize="17"
+                               FontWeight="SemiBold"
+                               Foreground="#142C4C" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
 
-        <StackPanel Grid.Row="1">
-            <RadioButton x:Name="Dashboard"
-                         Content="Dashboard"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Home/ic_fluent_home_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Home/ic_fluent_home_24_filled.png"
-                         ToolTip="icon-dashboard"
-                         AutomationProperties.Name="icon-dashboard"
-                         Style="{StaticResource MenuItemStyle}"
-                         IsChecked="True"
-                         Click="OnMenuItemClick" />
-            <RadioButton x:Name="Samples"
-                         Content="Samples"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/DocumentText/ic_fluent_document_text_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/DocumentText/ic_fluent_document_text_24_filled.png"
-                         ToolTip="icon-samples"
-                         AutomationProperties.Name="icon-samples"
-                         Style="{StaticResource MenuItemStyle}"
-                         Click="OnMenuItemClick" />
-            <RadioButton x:Name="RegisterSample"
-                         Content="Register Sample"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_filled.png"
-                         ToolTip="icon-register-sample"
-                         AutomationProperties.Name="icon-register-sample"
-                         Style="{StaticResource MenuItemStyle}"
-                         Click="OnMenuItemClick" />
-            <RadioButton x:Name="Processing"
-                         Content="Processing"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Settings/ic_fluent_settings_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Settings/ic_fluent_settings_24_filled.png"
-                         ToolTip="icon-processing"
-                         AutomationProperties.Name="icon-processing"
-                         Style="{StaticResource MenuItemStyle}"
-                         Click="OnMenuItemClick" />
-            <RadioButton x:Name="Validation"
-                         Content="Validation"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/CheckmarkCircle/ic_fluent_checkmark_circle_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/CheckmarkCircle/ic_fluent_checkmark_circle_24_filled.png"
-                         ToolTip="icon-validation"
-                         AutomationProperties.Name="icon-validation"
-                         Style="{StaticResource MenuItemStyle}"
-                         Click="OnMenuItemClick" />
-        </StackPanel>
+            <StackPanel Grid.Row="1">
+                <RadioButton x:Name="Dashboard"
+                             Content="{x:Static resources:Resources.MenuDashboard}"
+                             controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Home/ic_fluent_home_24_regular.png"
+                             controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Home/ic_fluent_home_24_filled.png"
+                             ToolTip="{x:Static resources:Resources.DashboardIconAccessibleName}"
+                             AutomationProperties.Name="{x:Static resources:Resources.DashboardIconAccessibleName}"
+                             Style="{StaticResource MenuItemStyle}"
+                             IsChecked="True"
+                             Click="OnMenuItemClick" />
+                <RadioButton x:Name="Samples"
+                             Content="{x:Static resources:Resources.MenuSamples}"
+                             controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/DocumentText/ic_fluent_document_text_24_regular.png"
+                             controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/DocumentText/ic_fluent_document_text_24_filled.png"
+                             ToolTip="{x:Static resources:Resources.SamplesIconAccessibleName}"
+                             AutomationProperties.Name="{x:Static resources:Resources.SamplesIconAccessibleName}"
+                             Style="{StaticResource MenuItemStyle}"
+                             Click="OnMenuItemClick" />
+                <RadioButton x:Name="RegisterSample"
+                             Content="{x:Static resources:Resources.MenuRegisterSample}"
+                             controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_regular.png"
+                             controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_filled.png"
+                             ToolTip="{x:Static resources:Resources.RegisterSampleIconAccessibleName}"
+                             AutomationProperties.Name="{x:Static resources:Resources.RegisterSampleIconAccessibleName}"
+                             Style="{StaticResource MenuItemStyle}"
+                             Click="OnMenuItemClick" />
+                <RadioButton x:Name="Processing"
+                             Content="{x:Static resources:Resources.MenuProcessing}"
+                             controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Settings/ic_fluent_settings_24_regular.png"
+                             controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Settings/ic_fluent_settings_24_filled.png"
+                             ToolTip="{x:Static resources:Resources.ProcessingIconAccessibleName}"
+                             AutomationProperties.Name="{x:Static resources:Resources.ProcessingIconAccessibleName}"
+                             Style="{StaticResource MenuItemStyle}"
+                             Click="OnMenuItemClick" />
+                <RadioButton x:Name="Validation"
+                             Content="{x:Static resources:Resources.MenuValidation}"
+                             controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/CheckmarkCircle/ic_fluent_checkmark_circle_24_regular.png"
+                             controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/CheckmarkCircle/ic_fluent_checkmark_circle_24_filled.png"
+                             ToolTip="{x:Static resources:Resources.ValidationIconAccessibleName}"
+                             AutomationProperties.Name="{x:Static resources:Resources.ValidationIconAccessibleName}"
+                             Style="{StaticResource MenuItemStyle}"
+                             Click="OnMenuItemClick" />
+            </StackPanel>
 
-        <StackPanel Grid.Row="2" Margin="32,24,24,28">
-            <TextBlock Text="Doing now what patients needs next"
-                       TextWrapping="Wrap"
-                       FontSize="13"
-                       Foreground="#7087A4" />
-            <Image x:Name="RocheLogoPlaceholder"
-                   Width="84"
-                   Height="34"
-                   Margin="0,14,0,0"
-                   HorizontalAlignment="Left"
-                   Source="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Images/roche-logo-blue.png"
-                   ToolTip="logo-roche"
-                   AutomationProperties.Name="logo-roche" />
-        </StackPanel>
-    </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border x:Name="FooterSeparator"
+                        Grid.Row="0"
+                        Height="1"
+                        Margin="24,0"
+                        Background="{StaticResource MenuSeparatorBrush}" />
+
+                <StackPanel Grid.Row="1" Margin="32,36,24,28">
+                    <TextBlock Text="{x:Static resources:Resources.FooterTagline}"
+                               TextWrapping="Wrap"
+                               FontSize="13"
+                               Foreground="#7087A4" />
+                    <Image x:Name="RocheLogoPlaceholder"
+                           Width="84"
+                           Height="34"
+                           Margin="0,14,0,0"
+                           HorizontalAlignment="Left"
+                           Source="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Images/roche-logo-blue.png"
+                           ToolTip="{x:Static resources:Resources.RocheLogoAccessibleName}"
+                           AutomationProperties.Name="{x:Static resources:Resources.RocheLogoAccessibleName}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>
 

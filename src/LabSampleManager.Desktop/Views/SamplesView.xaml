@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LabSampleManager.Desktop.Views"
              mc:Ignorable="d" 
-             xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls">
+             xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
+             xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties">
     <Grid>
-        <controls:HeaderControl Title="Samples"
-                                SubTitle="Search and manage laboratory samples"
+        <controls:HeaderControl Title="{x:Static resources:Resources.SamplesTitle}"
+                                SubTitle="{x:Static resources:Resources.SamplesSubtitle}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
     </Grid>

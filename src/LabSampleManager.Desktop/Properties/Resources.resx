@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ApplicationName" xml:space="preserve"><value>Lab Sample Manager</value></data>
+  <data name="UserDisplayName" xml:space="preserve"><value>Dr. Bruce Banner</value></data>
+  <data name="UserRole" xml:space="preserve"><value>Laboratory Scientist</value></data>
+  <data name="UserInitials" xml:space="preserve"><value>BB</value></data>
+  <data name="MenuDashboard" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="MenuSamples" xml:space="preserve"><value>Samples</value></data>
+  <data name="MenuRegisterSample" xml:space="preserve"><value>Register Sample</value></data>
+  <data name="MenuProcessing" xml:space="preserve"><value>Processing</value></data>
+  <data name="MenuValidation" xml:space="preserve"><value>Validation</value></data>
+  <data name="FooterTagline" xml:space="preserve"><value>Doing now what patients needs next</value></data>
+  <data name="ApplicationIconAccessibleName" xml:space="preserve"><value>icon-lab-sample-manager</value></data>
+  <data name="DashboardIconAccessibleName" xml:space="preserve"><value>icon-dashboard</value></data>
+  <data name="SamplesIconAccessibleName" xml:space="preserve"><value>icon-samples</value></data>
+  <data name="RegisterSampleIconAccessibleName" xml:space="preserve"><value>icon-register-sample</value></data>
+  <data name="ProcessingIconAccessibleName" xml:space="preserve"><value>icon-processing</value></data>
+  <data name="ValidationIconAccessibleName" xml:space="preserve"><value>icon-validation</value></data>
+  <data name="RocheLogoAccessibleName" xml:space="preserve"><value>logo-roche</value></data>
+  <data name="DashboardTitle" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="DashboardSubtitle" xml:space="preserve"><value>Laboratory Overview</value></data>
+  <data name="SamplesTitle" xml:space="preserve"><value>Samples</value></data>
+  <data name="SamplesSubtitle" xml:space="preserve"><value>Search and manage laboratory samples</value></data>
+  <data name="RegisterSampleTitle" xml:space="preserve"><value>Register Sample</value></data>
+  <data name="RegisterSampleSubtitle" xml:space="preserve"><value>Create a new laboratory sample request</value></data>
+  <data name="ProcessingMonitorTitle" xml:space="preserve"><value>Processing Monitor</value></data>
+  <data name="ProcessingMonitorSubtitle" xml:space="preserve"><value>Track analyzer workloads and sample execution</value></data>
+  <data name="ResultsValidationTitle" xml:space="preserve"><value>Results Validation</value></data>
+  <data name="ResultsValidationSubtitle" xml:space="preserve"><value>Validate and review completed results</value></data>
+  <data name="UnsupportedMenuDestination" xml:space="preserve"><value>Unsupported menu destination.</value></data>
+</root>

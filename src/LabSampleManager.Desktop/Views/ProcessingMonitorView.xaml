@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LabSampleManager.Desktop.Views"
              mc:Ignorable="d" 
-            xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls">
+            xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
+            xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties">
     <Grid>
-        <controls:HeaderControl Title="Processing Monitor"
-                                SubTitle="Track analyzer workloads and sample execution"
+        <controls:HeaderControl Title="{x:Static resources:Resources.ProcessingMonitorTitle}"
+                                SubTitle="{x:Static resources:Resources.ProcessingMonitorSubtitle}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
     </Grid>

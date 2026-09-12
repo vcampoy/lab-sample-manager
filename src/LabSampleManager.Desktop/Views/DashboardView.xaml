@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
+        xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties"
         mc:Ignorable="d">
     <Grid>
-        <controls:HeaderControl Title="Dashboard"
-                                SubTitle="Laboratory Overview"
+        <controls:HeaderControl Title="{x:Static resources:Resources.DashboardTitle}"
+                                SubTitle="{x:Static resources:Resources.DashboardSubtitle}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
     </Grid>

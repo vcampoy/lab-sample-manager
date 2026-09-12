@@ -2,8 +2,9 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Media.Imaging;
+using System.Windows.Media;
 using LabSampleManager.Desktop.Controls;
+using LabSampleManager.Desktop.Properties;
 using LabSampleManager.Desktop.Views;
 using Xunit;
 
@@ -102,12 +103,28 @@ public sealed class MenuControlTests
 
         Assert.NotNull(headerImage.Source);
         Assert.Contains("Beaker/ic_fluent_beaker_24_filled.png", headerImage.Source.ToString());
-        Assert.Equal("icon-lab-sample-manager", headerImage.ToolTip);
-        Assert.Equal("icon-lab-sample-manager", AutomationProperties.GetName(headerImage));
+        Assert.Equal(Resources.ApplicationIconAccessibleName, headerImage.ToolTip);
+        Assert.Equal(Resources.ApplicationIconAccessibleName, AutomationProperties.GetName(headerImage));
         Assert.NotNull(logoImage.Source);
         Assert.Contains("Assets/Images/roche-logo-blue.png", logoImage.Source.ToString());
-        Assert.Equal("logo-roche", logoImage.ToolTip);
-        Assert.Equal("logo-roche", AutomationProperties.GetName(logoImage));
+        Assert.Equal(Resources.RocheLogoAccessibleName, logoImage.ToolTip);
+        Assert.Equal(Resources.RocheLogoAccessibleName, AutomationProperties.GetName(logoImage));
+    }
+
+    [StaFact]
+    public void visualSeparators_should_matchDashboardReference_when_control_is_created()
+    {
+        var control = new MenuControl();
+        var menuSurface = Assert.IsType<Border>(control.FindName("MenuSurface"));
+        var footerSeparator = Assert.IsType<Border>(control.FindName("FooterSeparator"));
+        var expectedSeparatorBrush = Assert.IsType<SolidColorBrush>(menuSurface.BorderBrush);
+
+        Assert.Equal(Color.FromRgb(0xF4, 0xF8, 0xFB), Assert.IsType<SolidColorBrush>(menuSurface.Background).Color);
+        Assert.Equal(Color.FromRgb(0xE5, 0xEB, 0xF3), expectedSeparatorBrush.Color);
+        Assert.Equal(new Thickness(0, 0, 1, 0), menuSurface.BorderThickness);
+        Assert.Equal(1, footerSeparator.Height);
+        Assert.Equal(new Thickness(24, 0, 24, 0), footerSeparator.Margin);
+        Assert.Same(expectedSeparatorBrush, footerSeparator.Background);
     }
 
     [StaFact]
