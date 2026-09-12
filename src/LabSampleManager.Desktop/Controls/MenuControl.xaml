@@ -122,14 +122,6 @@
                          AutomationProperties.Name="icon-validation"
                          Style="{StaticResource MenuItemStyle}"
                          Click="OnMenuItemClick" />
-            <RadioButton x:Name="Settings"
-                         Content="Settings"
-                         controls:MenuControl.IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Options/ic_fluent_options_24_regular.png"
-                         controls:MenuControl.SelectedIconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Options/ic_fluent_options_24_filled.png"
-                         ToolTip="icon-settings"
-                         AutomationProperties.Name="icon-settings"
-                         Style="{StaticResource MenuItemStyle}"
-                         Click="OnMenuItemClick" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="32,24,24,28">

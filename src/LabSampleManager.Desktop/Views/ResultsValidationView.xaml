@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="LabSampleManager.Desktop.Views.ResultsValidationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LabSampleManager.Desktop.Views"
+             mc:Ignorable="d" 
+             xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls">
+    <Grid>
+        <controls:HeaderControl Title="Results Validation"
+                                SubTitle="Validate and review completed results"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top" />
+    </Grid>
+</UserControl>

@@ -10,8 +10,7 @@ public enum MenuDestination
     Samples,
     RegisterSample,
     Processing,
-    Validation,
-    Settings
+    Validation
 }
 
 public sealed class NavigationRequestedEventArgs(MenuDestination destination) : RoutedEventArgs
@@ -47,7 +46,7 @@ public partial class MenuControl : UserControl
     public MenuControl()
     {
         InitializeComponent();
-        _menuItems = [Dashboard, Samples, RegisterSample, Processing, Validation, Settings];
+        _menuItems = [Dashboard, Samples, RegisterSample, Processing, Validation];
     }
 
     public MenuDestination SelectedDestination

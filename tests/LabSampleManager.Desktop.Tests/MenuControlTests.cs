@@ -17,8 +17,16 @@ public sealed class MenuControlTests
         MenuDestination.Samples,
         MenuDestination.RegisterSample,
         MenuDestination.Processing,
-        MenuDestination.Validation,
-        MenuDestination.Settings
+        MenuDestination.Validation
+    ];
+
+    private static readonly (MenuDestination Destination, Type ViewType)[] NavigationCases =
+    [
+        (MenuDestination.Dashboard, typeof(DashboardView)),
+        (MenuDestination.Samples, typeof(SamplesView)),
+        (MenuDestination.RegisterSample, typeof(RegisterSampleView)),
+        (MenuDestination.Processing, typeof(ProcessingMonitor)),
+        (MenuDestination.Validation, typeof(ResultsValidationView))
     ];
 
     [StaFact]
@@ -113,15 +121,18 @@ public sealed class MenuControlTests
     }
 
     [StaFact]
-    public void contentHost_should_keepDashboardView_when_nonDashboard_destination_is_requested()
+    public void contentHost_should_loadMappedView_when_eachMenuItem_isClicked()
     {
         var window = new MainWindow();
         var contentHost = (ContentControl)window.FindName("ContentHost");
         var menu = (MenuControl)((Grid)window.Content).Children[0];
 
-        ((RadioButton)menu.FindName(nameof(MenuDestination.Samples))).RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        foreach (var (destination, viewType) in NavigationCases)
+        {
+            ((RadioButton)menu.FindName(destination.ToString())).RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
 
-        Assert.IsType<DashboardView>(contentHost.Content);
+            Assert.IsType(viewType, contentHost.Content);
+        }
     }
 
 }
