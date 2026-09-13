@@ -43,6 +43,59 @@ public sealed class FieldControlsTests
     }
 
     [StaFact]
+    public void textBox_should_useCompactSurface_and_separateTitleSurfaceSubtitleRows()
+    {
+        var control = new TextBoxControl { Title = "Barcode", SubTitle = "Enter the barcode" };
+        ApplyTemplate(control);
+
+        var fieldGrid = Assert.IsType<Grid>(control.Template!.FindName("PART_FieldGrid", control));
+        var title = Assert.IsType<TextBlock>(control.Template.FindName("PART_Title", control));
+        var surface = Assert.IsType<Border>(control.Template.FindName("PART_Surface", control));
+        var subtitle = Assert.IsType<TextBlock>(control.Template.FindName("PART_SubTitle", control));
+
+        Assert.Equal(3, fieldGrid.RowDefinitions.Count);
+        Assert.Equal(0, control.MinHeight);
+        Assert.Equal(38, surface.Height);
+        Assert.True(Grid.GetRow(title) < Grid.GetRow(surface));
+        Assert.True(Grid.GetRow(surface) < Grid.GetRow(subtitle));
+    }
+
+    [StaFact]
+    public void textBox_should_collapseEmptySubtitle_without_reservingLayoutSpace()
+    {
+        var control = new TextBoxControl { Title = "Barcode" };
+        ApplyTemplate(control);
+
+        var subtitle = Assert.IsType<TextBlock>(control.Template!.FindName("PART_SubTitle", control));
+
+        Assert.Equal(Visibility.Collapsed, subtitle.Visibility);
+
+        control.SubTitle = "Enter the barcode";
+        Assert.Equal(Visibility.Visible, subtitle.Visibility);
+
+        control.SubTitle = null!;
+        Assert.Equal(Visibility.Collapsed, subtitle.Visibility);
+    }
+
+    [StaFact]
+    public void dropDown_should_useCompactSurface_and_separateTitleSurfaceSubtitleRows()
+    {
+        var control = new DropDownControl { Title = "Sample type", SubTitle = "Select the sample type" };
+        ApplyTemplate(control);
+
+        var fieldGrid = Assert.IsType<Grid>(control.Template!.FindName("PART_FieldGrid", control));
+        var title = Assert.IsType<TextBlock>(control.Template.FindName("PART_Title", control));
+        var surface = Assert.IsType<Border>(control.Template.FindName("PART_DropDownBorder", control));
+        var subtitle = Assert.IsType<TextBlock>(control.Template.FindName("PART_SubTitle", control));
+
+        Assert.Equal(3, fieldGrid.RowDefinitions.Count);
+        Assert.Equal(0, control.MinHeight);
+        Assert.Equal(38, surface.Height);
+        Assert.True(Grid.GetRow(title) < Grid.GetRow(surface));
+        Assert.True(Grid.GetRow(surface) < Grid.GetRow(subtitle));
+    }
+
+    [StaFact]
     public void radioButton_should_supportPriorityValues_and_groupSelection()
     {
         var normal = new RadioButtonControl { Content = Resources.PriorityNormal, GroupName = "Priority" };

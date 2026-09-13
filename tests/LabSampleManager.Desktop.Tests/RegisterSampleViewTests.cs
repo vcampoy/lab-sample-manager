@@ -49,7 +49,7 @@ public sealed class RegisterSampleViewTests
 
         Assert.Equal(Resources.SampleInformationTitle, sampleInformation.Title);
         Assert.Equal(Resources.SampleInformationSubtitle, sampleInformation.SubTitle);
-        Assert.Null(sampleInformation.IconSource);
+        Assert.Contains("DocumentText/ic_fluent_document_text_24_regular.png", sampleInformation.IconSource!.ToString());
 
         Assert.Equal(Resources.RequestedTestsTitle, requestedTests.Title);
         Assert.Equal(Resources.RequestedTestsSubtitle, requestedTests.SubTitle);
@@ -82,6 +82,8 @@ public sealed class RegisterSampleViewTests
         Assert.Equal(GridUnitType.Star, buttonGroup.ColumnDefinitions[0].Width.GridUnitType);
         Assert.Equal(12, buttonGroup.ColumnDefinitions[1].Width.Value);
         Assert.Equal(GridUnitType.Star, buttonGroup.ColumnDefinitions[2].Width.GridUnitType);
+        Assert.Equal(1, buttonGroup.ColumnDefinitions[0].Width.Value);
+        Assert.Equal(2, buttonGroup.ColumnDefinitions[2].Width.Value);
         Assert.Equal(0, Grid.GetColumn(cancel));
         Assert.Equal(2, Grid.GetColumn(register));
         Assert.Equal(HorizontalAlignment.Stretch, cancel.HorizontalAlignment);
