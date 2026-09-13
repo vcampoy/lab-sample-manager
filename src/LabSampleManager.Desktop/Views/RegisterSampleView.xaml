@@ -26,7 +26,7 @@
               Margin="24,24,24,16">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="340" />
+                <ColumnDefinition Width="400" />
             </Grid.ColumnDefinitions>
 
             <Grid x:Name="RegisterSampleLeft"
@@ -61,19 +61,35 @@
         <Grid x:Name="RegisterSampleFooter"
               Grid.Row="2"
               Margin="24,0,24,24">
-            <StackPanel x:Name="RegisterSampleActions"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <Button x:Name="CancelButton"
-                        Height="40"
-                        MinWidth="120"
-                        Content="{x:Static resources:Resources.CancelAction}" />
-                <Button x:Name="RegisterSampleButton"
-                        Height="40"
-                        MinWidth="160"
-                        Margin="12,0,0,0"
-                        Content="{x:Static resources:Resources.RegisterSampleAction}" />
-            </StackPanel>
+            <Grid x:Name="RegisterSampleActions"
+                  HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="400" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="RegisterSampleButtonGroup"
+                      Grid.Column="1"
+                      Margin="20,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="12" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <controls:ButtonControl x:Name="CancelButton"
+                                            Grid.Column="0"
+                                            Height="40"
+                                            ButtonType="Secondary"
+                                            Title="{x:Static resources:Resources.CancelAction}" />
+                    <controls:ButtonControl x:Name="RegisterSampleButton"
+                                            Grid.Column="2"
+                                            Height="40"
+                                            ButtonType="Main"
+                                            IconPosition="Left"
+                                            IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_regular.png"
+                                            Title="{x:Static resources:Resources.RegisterSampleAction}" />
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

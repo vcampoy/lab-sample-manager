@@ -65,15 +65,33 @@ public sealed class RegisterSampleViewTests
     {
         var view = new RegisterSampleView();
         var footer = Assert.IsType<Grid>(view.FindName("RegisterSampleFooter"));
-        var actions = Assert.IsType<StackPanel>(view.FindName("RegisterSampleActions"));
-        var cancel = Assert.IsType<Button>(view.FindName("CancelButton"));
-        var register = Assert.IsType<Button>(view.FindName("RegisterSampleButton"));
+        var actions = Assert.IsType<Grid>(view.FindName("RegisterSampleActions"));
+        var buttonGroup = Assert.IsType<Grid>(view.FindName("RegisterSampleButtonGroup"));
+        var cancel = Assert.IsType<ButtonControl>(view.FindName("CancelButton"));
+        var register = Assert.IsType<ButtonControl>(view.FindName("RegisterSampleButton"));
 
         Assert.Same(actions, footer.Children[0]);
-        Assert.Equal(HorizontalAlignment.Right, actions.HorizontalAlignment);
-        Assert.Equal(Orientation.Horizontal, actions.Orientation);
-        Assert.Equal(Resources.CancelAction, cancel.Content);
-        Assert.Equal(Resources.RegisterSampleAction, register.Content);
+        Assert.Equal(HorizontalAlignment.Stretch, actions.HorizontalAlignment);
+        Assert.Equal(2, actions.ColumnDefinitions.Count);
+        Assert.Equal(GridUnitType.Star, actions.ColumnDefinitions[0].Width.GridUnitType);
+        Assert.Equal(340, actions.ColumnDefinitions[1].Width.Value);
+        Assert.Same(buttonGroup, actions.Children[0]);
+        Assert.Equal(1, Grid.GetColumn(buttonGroup));
+        Assert.Equal(new Thickness(20, 0, 0, 0), buttonGroup.Margin);
+        Assert.Equal(3, buttonGroup.ColumnDefinitions.Count);
+        Assert.Equal(GridUnitType.Star, buttonGroup.ColumnDefinitions[0].Width.GridUnitType);
+        Assert.Equal(12, buttonGroup.ColumnDefinitions[1].Width.Value);
+        Assert.Equal(GridUnitType.Star, buttonGroup.ColumnDefinitions[2].Width.GridUnitType);
+        Assert.Equal(0, Grid.GetColumn(cancel));
+        Assert.Equal(2, Grid.GetColumn(register));
+        Assert.Equal(HorizontalAlignment.Stretch, cancel.HorizontalAlignment);
+        Assert.Equal(HorizontalAlignment.Stretch, register.HorizontalAlignment);
+        Assert.Equal(Resources.CancelAction, cancel.Title);
+        Assert.Equal(Resources.RegisterSampleAction, register.Title);
+        Assert.Equal(ButtonType.Secondary, cancel.ButtonType);
+        Assert.Equal(ButtonType.Main, register.ButtonType);
+        Assert.Null(cancel.IconSource);
+        Assert.Contains("AddCircle/ic_fluent_add_circle_24_regular.png", register.IconSource!.ToString());
         Assert.Null(cancel.Command);
         Assert.Null(register.Command);
     }

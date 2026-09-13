@@ -1,0 +1,74 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LabSampleManager.Desktop.Controls">
+    <Style TargetType="{x:Type local:ContainerControl}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ContainerControl}">
+                    <Border x:Name="PART_ContainerBorder"
+                            Background="White"
+                            BorderBrush="#DCE8F5"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="22">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image x:Name="PART_Icon"
+                                       Width="30"
+                                       Height="30"
+                                       Stretch="Uniform"
+                                       Source="{TemplateBinding IconSource}" />
+
+                                <StackPanel Grid.Column="1"
+                                            Margin="14,0,0,0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock x:Name="PART_Title"
+                                               FontSize="19"
+                                               FontWeight="SemiBold"
+                                               Foreground="#123A70"
+                                               Text="{TemplateBinding Title}"
+                                               TextTrimming="CharacterEllipsis"
+                                               TextWrapping="NoWrap" />
+                                    <TextBlock x:Name="PART_SubTitle"
+                                               Margin="0,2,0,0"
+                                               FontSize="14"
+                                               Foreground="#6B82A4"
+                                               Text="{TemplateBinding SubTitle}"
+                                               TextTrimming="CharacterEllipsis"
+                                               TextWrapping="NoWrap" />
+                                </StackPanel>
+                            </Grid>
+
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              Grid.Row="1"
+                                              Margin="0,20,0,0"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IconSource" Value="{x:Null}">
+                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
