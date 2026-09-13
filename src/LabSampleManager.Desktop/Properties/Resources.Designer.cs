@@ -212,6 +212,78 @@ namespace LabSampleManager.Desktop.Properties {
                 return ResourceManager.GetString("RegisterSampleTitle", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelAction {
+            get {
+                return ResourceManager.GetString("CancelAction", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the basic details for the new sample.
+        /// </summary>
+        public static string SampleInformationSubtitle {
+            get {
+                return ResourceManager.GetString("SampleInformationSubtitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sample Information.
+        /// </summary>
+        public static string SampleInformationTitle {
+            get {
+                return ResourceManager.GetString("SampleInformationTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select the tests to be perfomed on this sample.
+        /// </summary>
+        public static string RequestedTestsSubtitle {
+            get {
+                return ResourceManager.GetString("RequestedTestsSubtitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Requested Tests.
+        /// </summary>
+        public static string RequestedTestsTitle {
+            get {
+                return ResourceManager.GetString("RequestedTestsTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure the following.
+        /// </summary>
+        public static string RegistrationRulesSubtitle {
+            get {
+                return ResourceManager.GetString("RegistrationRulesSubtitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Rules.
+        /// </summary>
+        public static string RegistrationRulesTitle {
+            get {
+                return ResourceManager.GetString("RegistrationRulesTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Register Sample.
+        /// </summary>
+        public static string RegisterSampleAction {
+            get {
+                return ResourceManager.GetString("RegisterSampleAction", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Validate and review completed results.

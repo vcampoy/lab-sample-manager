@@ -7,10 +7,73 @@
              mc:Ignorable="d" 
              xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
              xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties">
-    <Grid>
-        <controls:HeaderControl Title="{x:Static resources:Resources.RegisterSampleTitle}"
+    <Grid x:Name="RegisterSampleLayout">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:HeaderControl x:Name="RegisterSampleHeader"
+                                Grid.Row="0"
+                                Title="{x:Static resources:Resources.RegisterSampleTitle}"
                                 SubTitle="{x:Static resources:Resources.RegisterSampleSubtitle}"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Top" />
+
+        <Grid x:Name="RegisterSampleBody"
+              Grid.Row="1"
+              Margin="24,24,24,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="340" />
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="RegisterSampleLeft"
+                  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <controls:ContainerControl x:Name="SampleInformationContainer"
+                                           Grid.Row="0"
+                                           Title="{x:Static resources:Resources.SampleInformationTitle}"
+                                           SubTitle="{x:Static resources:Resources.SampleInformationSubtitle}"
+                                           IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/BarcodeScanner/ic_fluent_barcode_scanner_24_regular.png" />
+
+                <controls:ContainerControl x:Name="RequestedTestsContainer"
+                                           Grid.Row="1"
+                                           Margin="0,20,0,0"
+                                           Title="{x:Static resources:Resources.RequestedTestsTitle}"
+                                           SubTitle="{x:Static resources:Resources.RequestedTestsSubtitle}"
+                                           IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/TaskList/ic_fluent_task_list_24_regular_ltr.png" />
+            </Grid>
+
+            <controls:ContainerControl x:Name="RegistrationRulesContainer"
+                                       Grid.Column="1"
+                                       Margin="20,0,0,0"
+                                       Title="{x:Static resources:Resources.RegistrationRulesTitle}"
+                                       SubTitle="{x:Static resources:Resources.RegistrationRulesSubtitle}"
+                                       IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Info/ic_fluent_info_24_regular.png" />
+        </Grid>
+
+        <Grid x:Name="RegisterSampleFooter"
+              Grid.Row="2"
+              Margin="24,0,24,24">
+            <StackPanel x:Name="RegisterSampleActions"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button x:Name="CancelButton"
+                        Height="40"
+                        MinWidth="120"
+                        Content="{x:Static resources:Resources.CancelAction}" />
+                <Button x:Name="RegisterSampleButton"
+                        Height="40"
+                        MinWidth="160"
+                        Margin="12,0,0,0"
+                        Content="{x:Static resources:Resources.RegisterSampleAction}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

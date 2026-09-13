@@ -27,6 +27,14 @@
   <data name="SamplesSubtitle" xml:space="preserve"><value>Search and manage laboratory samples</value></data>
   <data name="RegisterSampleTitle" xml:space="preserve"><value>Register Sample</value></data>
   <data name="RegisterSampleSubtitle" xml:space="preserve"><value>Create a new laboratory sample request</value></data>
+  <data name="SampleInformationTitle" xml:space="preserve"><value>Sample Information</value></data>
+  <data name="SampleInformationSubtitle" xml:space="preserve"><value>Enter the basic details for the new sample</value></data>
+  <data name="RequestedTestsTitle" xml:space="preserve"><value>Requested Tests</value></data>
+  <data name="RequestedTestsSubtitle" xml:space="preserve"><value>Select the tests to be perfomed on this sample</value></data>
+  <data name="RegistrationRulesTitle" xml:space="preserve"><value>Registration Rules</value></data>
+  <data name="RegistrationRulesSubtitle" xml:space="preserve"><value>Please ensure the following</value></data>
+  <data name="CancelAction" xml:space="preserve"><value>Cancel</value></data>
+  <data name="RegisterSampleAction" xml:space="preserve"><value>Register Sample</value></data>
   <data name="ProcessingMonitorTitle" xml:space="preserve"><value>Processing Monitor</value></data>
   <data name="ProcessingMonitorSubtitle" xml:space="preserve"><value>Track analyzer workloads and sample execution</value></data>
   <data name="ResultsValidationTitle" xml:space="preserve"><value>Results Validation</value></data>
