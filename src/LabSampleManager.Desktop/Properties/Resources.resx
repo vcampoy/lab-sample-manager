@@ -40,4 +40,20 @@
   <data name="ResultsValidationTitle" xml:space="preserve"><value>Results Validation</value></data>
   <data name="ResultsValidationSubtitle" xml:space="preserve"><value>Validate and review completed results</value></data>
   <data name="UnsupportedMenuDestination" xml:space="preserve"><value>Unsupported menu destination.</value></data>
+  <data name="BarcodeLabel" xml:space="preserve"><value>Barcode</value></data>
+  <data name="PatientCodeLabel" xml:space="preserve"><value>Patient Code</value></data>
+  <data name="SampleTypeLabel" xml:space="preserve"><value>Sample Type</value></data>
+  <data name="SampleTypeSubtitle" xml:space="preserve"><value>Select the sample type.</value></data>
+  <data name="SampleTypeBlood" xml:space="preserve"><value>Blood</value></data>
+  <data name="SampleTypeUrine" xml:space="preserve"><value>Urine</value></data>
+  <data name="PriorityLabel" xml:space="preserve"><value>Priority</value></data>
+  <data name="PriorityNormal" xml:space="preserve"><value>Normal</value></data>
+  <data name="PriorityUrgent" xml:space="preserve"><value>Urgent</value></data>
+  <data name="PriorityStat" xml:space="preserve"><value>STAT</value></data>
+  <data name="ReceivedDateTimeLabel" xml:space="preserve"><value>Received Date &amp; Time</value></data>
+  <data name="ReceivedDateTimeSubtitle" xml:space="preserve"><value>Date and time the sample was received in the laboratory</value></data>
+  <data name="NotesLabel" xml:space="preserve"><value>Notes</value></data>
+  <data name="NotesPlaceholder" xml:space="preserve"><value>Enter any additional information (e.g., clinical details, special instructions)</value></data>
+  <data name="RequiredFieldIndicator" xml:space="preserve"><value>*</value></data>
+  <data name="DropDownIndicator" xml:space="preserve"><value>⌄</value></data>
 </root>

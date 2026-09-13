@@ -38,6 +38,22 @@ public sealed class LocalizationTests
         ("RegisterSampleSubtitle", "Create a new laboratory sample request"),
         ("SampleInformationTitle", "Sample Information"),
         ("SampleInformationSubtitle", "Enter the basic details for the new sample"),
+        ("BarcodeLabel", "Barcode"),
+        ("PatientCodeLabel", "Patient Code"),
+        ("SampleTypeLabel", "Sample Type"),
+        ("SampleTypeSubtitle", "Select the sample type."),
+        ("SampleTypeBlood", "Blood"),
+        ("SampleTypeUrine", "Urine"),
+        ("PriorityLabel", "Priority"),
+        ("PriorityNormal", "Normal"),
+        ("PriorityUrgent", "Urgent"),
+        ("PriorityStat", "STAT"),
+        ("ReceivedDateTimeLabel", "Received Date & Time"),
+        ("ReceivedDateTimeSubtitle", "Date and time the sample was received in the laboratory"),
+        ("NotesLabel", "Notes"),
+        ("NotesPlaceholder", "Enter any additional information (e.g., clinical details, special instructions)"),
+        ("RequiredFieldIndicator", "*"),
+        ("DropDownIndicator", "⌄"),
         ("RequestedTestsTitle", "Requested Tests"),
         ("RequestedTestsSubtitle", "Select the tests to be perfomed on this sample"),
         ("RegistrationRulesTitle", "Registration Rules"),
@@ -78,7 +94,8 @@ public sealed class LocalizationTests
         "Content",
         "Title",
         "SubTitle",
-        "ToolTip"
+        "ToolTip",
+        "Placeholder"
     ];
 
     private static readonly ResourceManager ResourceManager =

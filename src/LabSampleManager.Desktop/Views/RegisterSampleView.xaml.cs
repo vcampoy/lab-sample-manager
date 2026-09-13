@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using LabSampleManager.Desktop.ViewModels;
 
-namespace LabSampleManager.Desktop.Views
+namespace LabSampleManager.Desktop.Views;
+
+public partial class RegisterSampleView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for RegisterSampleView.xaml
-    /// </summary>
-    public partial class RegisterSampleView : UserControl
+    public RegisterSampleView() : this(new RegisterSampleViewModel()) { }
+    public RegisterSampleView(RegisterSampleViewModel viewModel)
     {
-        public RegisterSampleView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        DataContext = viewModel;
     }
 }

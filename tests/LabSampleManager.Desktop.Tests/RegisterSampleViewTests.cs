@@ -49,7 +49,7 @@ public sealed class RegisterSampleViewTests
 
         Assert.Equal(Resources.SampleInformationTitle, sampleInformation.Title);
         Assert.Equal(Resources.SampleInformationSubtitle, sampleInformation.SubTitle);
-        Assert.Contains("BarcodeScanner/ic_fluent_barcode_scanner_24_regular.png", sampleInformation.IconSource!.ToString());
+        Assert.Null(sampleInformation.IconSource);
 
         Assert.Equal(Resources.RequestedTestsTitle, requestedTests.Title);
         Assert.Equal(Resources.RequestedTestsSubtitle, requestedTests.SubTitle);

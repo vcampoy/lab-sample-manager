@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using LabSampleManager.Desktop.Controls;
 using LocalizationResources = LabSampleManager.Desktop.Properties.Resources;
 using LabSampleManager.Desktop.Views;
+using LabSampleManager.Desktop.ViewModels;
 
 namespace LabSampleManager.Desktop
 {
@@ -11,6 +12,7 @@ namespace LabSampleManager.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly RegisterSampleViewModel _registerSampleViewModel = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -22,12 +24,12 @@ namespace LabSampleManager.Desktop
             ContentHost.Content = CreateView(args.Destination);
         }
 
-        private static UserControl CreateView(MenuDestination destination) =>
+        private UserControl CreateView(MenuDestination destination) =>
             destination switch
             {
                 MenuDestination.Dashboard => new DashboardView(),
                 MenuDestination.Samples => new SamplesView(),
-                MenuDestination.RegisterSample => new RegisterSampleView(),
+                MenuDestination.RegisterSample => new RegisterSampleView(_registerSampleViewModel),
                 MenuDestination.Processing => new ProcessingMonitor(),
                 MenuDestination.Validation => new ResultsValidationView(),
                 _ => throw new ArgumentOutOfRangeException(nameof(destination), destination, LocalizationResources.UnsupportedMenuDestination)

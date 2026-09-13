@@ -1,95 +1,22 @@
-﻿<UserControl x:Class="LabSampleManager.Desktop.Views.RegisterSampleView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:LabSampleManager.Desktop.Views"
-             mc:Ignorable="d" 
-             xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
-             xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties">
-    <Grid x:Name="RegisterSampleLayout">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <controls:HeaderControl x:Name="RegisterSampleHeader"
-                                Grid.Row="0"
-                                Title="{x:Static resources:Resources.RegisterSampleTitle}"
-                                SubTitle="{x:Static resources:Resources.RegisterSampleSubtitle}"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top" />
-
-        <Grid x:Name="RegisterSampleBody"
-              Grid.Row="1"
-              Margin="24,24,24,16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="400" />
-            </Grid.ColumnDefinitions>
-
-            <Grid x:Name="RegisterSampleLeft"
-                  Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <controls:ContainerControl x:Name="SampleInformationContainer"
-                                           Grid.Row="0"
-                                           Title="{x:Static resources:Resources.SampleInformationTitle}"
-                                           SubTitle="{x:Static resources:Resources.SampleInformationSubtitle}"
-                                           IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/BarcodeScanner/ic_fluent_barcode_scanner_24_regular.png" />
-
-                <controls:ContainerControl x:Name="RequestedTestsContainer"
-                                           Grid.Row="1"
-                                           Margin="0,20,0,0"
-                                           Title="{x:Static resources:Resources.RequestedTestsTitle}"
-                                           SubTitle="{x:Static resources:Resources.RequestedTestsSubtitle}"
-                                           IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/TaskList/ic_fluent_task_list_24_regular_ltr.png" />
+<UserControl x:Class="LabSampleManager.Desktop.Views.RegisterSampleView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls" xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties" mc:Ignorable="d">
+    <Grid x:Name="RegisterSampleLayout"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <controls:HeaderControl x:Name="RegisterSampleHeader" Grid.Row="0" Title="{x:Static resources:Resources.RegisterSampleTitle}" SubTitle="{x:Static resources:Resources.RegisterSampleSubtitle}" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Grid x:Name="RegisterSampleBody" Grid.Row="1" Margin="24,24,24,16"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
+            <Grid x:Name="RegisterSampleLeft" Grid.Column="0"><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <controls:ContainerControl x:Name="SampleInformationContainer" Grid.Row="0" Title="{x:Static resources:Resources.SampleInformationTitle}" SubTitle="{x:Static resources:Resources.SampleInformationSubtitle}">
+                    <Grid x:Name="SampleInformationForm"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <controls:TextBoxControl x:Name="BarcodeTextBox" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Title="{x:Static resources:Resources.BarcodeLabel}" FieldIndicatorMode="WhenInvalid" Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBarcodeValid}"/>
+                        <controls:TextBoxControl x:Name="PatientCodeTextBox" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" Title="{x:Static resources:Resources.PatientCodeLabel}" FieldIndicatorMode="WhenInvalid" Text="{Binding PatientCode, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPatientCodeValid}"/>
+                        <controls:DropDownControl x:Name="SampleTypeDropDown" Grid.Row="1" Grid.Column="0" Margin="0,18,10,0" Title="{x:Static resources:Resources.SampleTypeLabel}" SubTitle="{x:Static resources:Resources.SampleTypeSubtitle}" FieldIndicatorMode="Always" ItemsSource="{Binding SampleTypes}" SelectedItem="{Binding SelectedSampleType, Mode=TwoWay}"/>
+                        <StackPanel x:Name="PriorityField" AutomationProperties.Name="{x:Static resources:Resources.PriorityLabel}" Grid.Row="1" Grid.Column="1" Margin="10,18,0,0"><StackPanel Orientation="Horizontal"><TextBlock Text="{x:Static resources:Resources.PriorityLabel}" FontWeight="SemiBold"/><TextBlock Text="{x:Static resources:Resources.RequiredFieldIndicator}" Foreground="#D70015" Margin="4,0,0,0"/></StackPanel><StackPanel Orientation="Horizontal" Margin="0,8,0,0"><controls:RadioButtonControl x:Name="NormalRadioButton" Content="{x:Static resources:Resources.PriorityNormal}" GroupName="SamplePriority" IsChecked="{Binding IsNormalPriority, Mode=TwoWay}"/><controls:RadioButtonControl x:Name="UrgentRadioButton" Content="{x:Static resources:Resources.PriorityUrgent}" GroupName="SamplePriority" IsChecked="{Binding IsUrgentPriority, Mode=TwoWay}"/><controls:RadioButtonControl x:Name="StatRadioButton" Content="{x:Static resources:Resources.PriorityStat}" GroupName="SamplePriority" IsChecked="{Binding IsStatPriority, Mode=TwoWay}"/></StackPanel></StackPanel>
+                        <controls:DateTimePickerControl x:Name="ReceivedDateTimePicker" AutomationProperties.Name="{x:Static resources:Resources.ReceivedDateTimeLabel}" Grid.Row="2" Grid.Column="0" Margin="0,18,10,0" Title="{x:Static resources:Resources.ReceivedDateTimeLabel}" SubTitle="{x:Static resources:Resources.ReceivedDateTimeSubtitle}" FieldIndicatorMode="Always" SelectedDateTime="{Binding ReceivedDateTime, Mode=TwoWay}"/>
+                        <controls:TextAreaControl x:Name="NotesTextArea" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,18,0,0" Title="{x:Static resources:Resources.NotesLabel}" Placeholder="{x:Static resources:Resources.NotesPlaceholder}" MaxLength="500" Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                </controls:ContainerControl>
+                <controls:ContainerControl x:Name="RequestedTestsContainer" Grid.Row="1" Margin="0,20,0,0" Title="{x:Static resources:Resources.RequestedTestsTitle}" SubTitle="{x:Static resources:Resources.RequestedTestsSubtitle}" IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/TaskList/ic_fluent_task_list_24_regular_ltr.png"/>
             </Grid>
-
-            <controls:ContainerControl x:Name="RegistrationRulesContainer"
-                                       Grid.Column="1"
-                                       Margin="20,0,0,0"
-                                       Title="{x:Static resources:Resources.RegistrationRulesTitle}"
-                                       SubTitle="{x:Static resources:Resources.RegistrationRulesSubtitle}"
-                                       IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Info/ic_fluent_info_24_regular.png" />
+            <controls:ContainerControl x:Name="RegistrationRulesContainer" Grid.Column="1" Margin="20,0,0,0" Title="{x:Static resources:Resources.RegistrationRulesTitle}" SubTitle="{x:Static resources:Resources.RegistrationRulesSubtitle}" IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/Info/ic_fluent_info_24_regular.png"/>
         </Grid>
-
-        <Grid x:Name="RegisterSampleFooter"
-              Grid.Row="2"
-              Margin="24,0,24,24">
-            <Grid x:Name="RegisterSampleActions"
-                  HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="400" />
-                </Grid.ColumnDefinitions>
-
-                <Grid x:Name="RegisterSampleButtonGroup"
-                      Grid.Column="1"
-                      Margin="20,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="12" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <controls:ButtonControl x:Name="CancelButton"
-                                            Grid.Column="0"
-                                            Height="40"
-                                            ButtonType="Secondary"
-                                            Title="{x:Static resources:Resources.CancelAction}" />
-                    <controls:ButtonControl x:Name="RegisterSampleButton"
-                                            Grid.Column="2"
-                                            Height="40"
-                                            ButtonType="Main"
-                                            IconPosition="Left"
-                                            IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_regular.png"
-                                            Title="{x:Static resources:Resources.RegisterSampleAction}" />
-                </Grid>
-            </Grid>
-        </Grid>
+        <Grid x:Name="RegisterSampleFooter" Grid.Row="2" Margin="24,0,24,24"><Grid x:Name="RegisterSampleActions" HorizontalAlignment="Stretch"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions><Grid x:Name="RegisterSampleButtonGroup" Grid.Column="1" Margin="20,0,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><controls:ButtonControl x:Name="CancelButton" Grid.Column="0" Height="40" ButtonType="Secondary" Title="{x:Static resources:Resources.CancelAction}"/><controls:ButtonControl x:Name="RegisterSampleButton" Grid.Column="2" Height="40" ButtonType="Main" IconPosition="Left" IconSource="pack://application:,,,/LabSampleManager.Desktop;component/Assets/Icons/Fluent/AddCircle/ic_fluent_add_circle_24_regular.png" Title="{x:Static resources:Resources.RegisterSampleAction}"/></Grid></Grid></Grid>
     </Grid>
 </UserControl>
