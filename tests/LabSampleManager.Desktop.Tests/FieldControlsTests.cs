@@ -1,7 +1,9 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using LabSampleManager.Desktop.Controls;
+using LabSampleManager.Desktop.Models;
 using LabSampleManager.Desktop.Properties;
 using LabSampleManager.Desktop.Validation;
 using LabSampleManager.Desktop.ViewModels;
@@ -11,6 +13,8 @@ namespace LabSampleManager.Desktop.Tests;
 
 public sealed class FieldControlsTests
 {
+    private static readonly SampleType[] ExpectedSampleTypes = [SampleType.Blood, SampleType.Urine];
+
     [StaFact]
     public void textBox_should_exposeFieldDefaults_and_indicatorModes()
     {
@@ -40,6 +44,53 @@ public sealed class FieldControlsTests
         Assert.Equal(Resources.SampleTypeBlood, control.Items[0]);
         Assert.Equal(Resources.SampleTypeUrine, control.Items[1]);
         Assert.True(control.ShowFieldIndicator);
+    }
+
+    [Fact]
+    public void registerSampleViewModel_should_exposeTypedSampleTypes_when_created()
+    {
+        var viewModel = new RegisterSampleViewModel();
+
+        Assert.Equal(ExpectedSampleTypes, viewModel.SampleTypes);
+        Assert.Equal(SampleType.Blood, viewModel.SelectedSampleType);
+    }
+
+    [Fact]
+    public void selectedSampleType_should_raisePropertyChanged_when_value_changes()
+    {
+        var viewModel = new RegisterSampleViewModel();
+        var changedProperty = string.Empty;
+        viewModel.PropertyChanged += (_, args) => changedProperty = args.PropertyName ?? string.Empty;
+
+        viewModel.SelectedSampleType = SampleType.Urine;
+
+        Assert.Equal(SampleType.Urine, viewModel.SelectedSampleType);
+        Assert.Equal(nameof(RegisterSampleViewModel.SelectedSampleType), changedProperty);
+    }
+
+    [StaFact]
+    public void dropDown_should_resolvePopupPlacementTarget_whenTemplateIsApplied()
+    {
+        var control = new DropDownControl();
+        var window = new Window { Content = control, Width = 320, Height = 120 };
+        window.Show();
+        try
+        {
+            control.UpdateLayout();
+
+            var border = Assert.IsType<Border>(control.Template!.FindName("PART_DropDownBorder", control));
+            var popup = Assert.IsType<Popup>(control.Template.FindName("PART_Popup", control));
+
+            Assert.Same(border, popup.PlacementTarget);
+
+            control.IsDropDownOpen = true;
+            Assert.True(popup.IsOpen);
+            control.IsDropDownOpen = false;
+        }
+        finally
+        {
+            window.Close();
+        }
     }
 
     [StaFact]
@@ -93,6 +144,24 @@ public sealed class FieldControlsTests
         Assert.Equal(38, surface.Height);
         Assert.True(Grid.GetRow(title) < Grid.GetRow(surface));
         Assert.True(Grid.GetRow(surface) < Grid.GetRow(subtitle));
+    }
+
+    [StaFact]
+    public void dropDown_should_forwardSelectionTemplate_toSelectedValuePresenter_when_templateIsApplied()
+    {
+        var itemTemplate = new DataTemplate();
+        var control = new DropDownControl
+        {
+            ItemsSource = ExpectedSampleTypes,
+            ItemTemplate = itemTemplate,
+            SelectedItem = SampleType.Blood
+        };
+        ApplyTemplate(control);
+
+        var toggleButton = Assert.IsType<ToggleButton>(control.Template!.FindName("PART_ToggleButton", control));
+        var contentPresenter = Assert.IsType<ContentPresenter>(toggleButton.Content);
+
+        Assert.Same(itemTemplate, contentPresenter.ContentTemplate);
     }
 
     [StaFact]
@@ -164,6 +233,30 @@ public sealed class FieldControlsTests
         viewModel.Barcode = "ok";
         Assert.True(viewModel.IsBarcodeValid);
         Assert.Equal(1, validator.BarcodeCalls);
+    }
+
+    [StaFact]
+    public void sampleTypeDropDown_should_updateTypedSelection_when_item_changes()
+    {
+        var viewModel = new RegisterSampleViewModel();
+        var view = new Views.RegisterSampleView(viewModel);
+        var window = new Window { Content = view, Width = 640, Height = 480 };
+        window.Show();
+        try
+        {
+            view.UpdateLayout();
+            var dropdown = Assert.IsType<DropDownControl>(view.FindName("SampleTypeDropDown"));
+            Assert.Equal(SampleType.Blood, dropdown.SelectedItem);
+
+            dropdown.SelectedItem = SampleType.Urine;
+
+            Assert.Equal(SampleType.Urine, viewModel.SelectedSampleType);
+            Assert.NotNull(dropdown.ItemTemplate);
+        }
+        finally
+        {
+            window.Close();
+        }
     }
 
     private static void ApplyTemplate(Control control)

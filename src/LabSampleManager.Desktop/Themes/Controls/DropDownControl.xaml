@@ -70,7 +70,8 @@
                                     <ContentPresenter
                                         Margin="12,6"
                                         HorizontalAlignment="Left"
-                                        Content="{TemplateBinding SelectionBoxItem}"/>
+                                        Content="{TemplateBinding SelectionBoxItem}"
+                                        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
                                 </ToggleButton>
 
                                 <TextBlock
@@ -96,7 +97,7 @@
                             x:Name="PART_Popup"
                             Grid.Row="1"
                             Placement="Bottom"
-                            PlacementTarget="PART_DropDownBorder"
+                            PlacementTarget="{Binding ElementName=PART_DropDownBorder}"
                             IsOpen="{TemplateBinding IsDropDownOpen}"
                             AllowsTransparency="True"
                             Focusable="False">

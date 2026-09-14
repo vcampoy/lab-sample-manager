@@ -5,8 +5,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:controls="clr-namespace:LabSampleManager.Desktop.Controls"
+    xmlns:converters="clr-namespace:LabSampleManager.Desktop.Converters"
     xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:SampleTypeDisplayConverter x:Key="SampleTypeDisplayConverter"/>
+        <DataTemplate x:Key="SampleTypeItemTemplate">
+            <TextBlock Text="{Binding Converter={StaticResource SampleTypeDisplayConverter}}"/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid x:Name="RegisterSampleLayout">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -85,6 +92,7 @@
                             SubTitle="{x:Static resources:Resources.SampleTypeSubtitle}"
                             FieldIndicatorMode="Always"
                             ItemsSource="{Binding SampleTypes}"
+                            ItemTemplate="{StaticResource SampleTypeItemTemplate}"
                             SelectedItem="{Binding SelectedSampleType, Mode=TwoWay}"/>
 
                         <StackPanel
