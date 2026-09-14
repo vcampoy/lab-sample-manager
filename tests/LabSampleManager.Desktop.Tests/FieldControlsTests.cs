@@ -79,13 +79,18 @@ public sealed class FieldControlsTests
             control.UpdateLayout();
 
             var border = Assert.IsType<Border>(control.Template!.FindName("PART_DropDownBorder", control));
+            var toggleButton = Assert.IsType<ToggleButton>(control.Template.FindName("PART_ToggleButton", control));
             var popup = Assert.IsType<Popup>(control.Template.FindName("PART_Popup", control));
 
             Assert.Same(border, popup.PlacementTarget);
 
-            control.IsDropDownOpen = true;
+            toggleButton.IsChecked = true;
+            Assert.True(control.IsDropDownOpen);
             Assert.True(popup.IsOpen);
-            control.IsDropDownOpen = false;
+
+            toggleButton.IsChecked = false;
+            Assert.False(control.IsDropDownOpen);
+            Assert.False(popup.IsOpen);
         }
         finally
         {
@@ -147,6 +152,42 @@ public sealed class FieldControlsTests
     }
 
     [StaFact]
+    public void dropDown_should_leftAlignSelectedContent_and_centerChevron_when_templateIsApplied()
+    {
+        var control = new DropDownControl
+        {
+            ItemsSource = ExpectedSampleTypes,
+            SelectedItem = SampleType.Blood
+        };
+        ApplyTemplate(control);
+
+        var toggleButton = Assert.IsType<ToggleButton>(control.Template!.FindName("PART_ToggleButton", control));
+        var selectionLayout = Assert.IsType<Grid>(control.Template.FindName("PART_SelectionLayout", control));
+        var selectedValuePresenter = Assert.IsType<ContentPresenter>(control.Template.FindName("PART_SelectedValuePresenter", control));
+        var dropDownIndicator = Assert.IsType<Image>(control.Template.FindName("PART_DropDownIndicator", control));
+
+        Assert.Same(selectionLayout, toggleButton.Content);
+        Assert.Equal(HorizontalAlignment.Stretch, toggleButton.HorizontalContentAlignment);
+        Assert.Equal(VerticalAlignment.Stretch, toggleButton.VerticalContentAlignment);
+        Assert.Equal(2, selectionLayout.ColumnDefinitions.Count);
+        Assert.Equal(new GridLength(1, GridUnitType.Star), selectionLayout.ColumnDefinitions[0].Width);
+        Assert.Equal(new GridLength(38), selectionLayout.ColumnDefinitions[1].Width);
+        Assert.Equal(HorizontalAlignment.Left, selectedValuePresenter.HorizontalAlignment);
+        Assert.Equal(VerticalAlignment.Center, selectedValuePresenter.VerticalAlignment);
+        Assert.Equal(new Thickness(12, 0, 0, 0), selectedValuePresenter.Margin);
+        Assert.Equal(16, dropDownIndicator.Width);
+        Assert.Equal(16, dropDownIndicator.Height);
+        Assert.Equal(HorizontalAlignment.Center, dropDownIndicator.HorizontalAlignment);
+        Assert.Equal(VerticalAlignment.Center, dropDownIndicator.VerticalAlignment);
+        Assert.Equal(1, Grid.GetColumn(dropDownIndicator));
+        Assert.True(dropDownIndicator.Source.IsFrozen);
+        Assert.EndsWith(
+            "/Assets/Icons/Fluent/ChevronDown/ic_fluent_chevron_down_24_regular.png",
+            dropDownIndicator.Source.ToString(),
+            StringComparison.Ordinal);
+    }
+
+    [StaFact]
     public void dropDown_should_forwardSelectionTemplate_toSelectedValuePresenter_when_templateIsApplied()
     {
         var itemTemplate = new DataTemplate();
@@ -158,8 +199,8 @@ public sealed class FieldControlsTests
         };
         ApplyTemplate(control);
 
-        var toggleButton = Assert.IsType<ToggleButton>(control.Template!.FindName("PART_ToggleButton", control));
-        var contentPresenter = Assert.IsType<ContentPresenter>(toggleButton.Content);
+        var contentPresenter = Assert.IsType<ContentPresenter>(
+            control.Template!.FindName("PART_SelectedValuePresenter", control));
 
         Assert.Same(itemTemplate, contentPresenter.ContentTemplate);
     }
