@@ -2,6 +2,8 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using LabSampleManager.Desktop.Controls;
 using LabSampleManager.Desktop.Models;
 using LabSampleManager.Desktop.Properties;
@@ -220,6 +222,58 @@ public sealed class FieldControlsTests
         Assert.Equal("STAT", stat.Content);
         ApplyTemplate(normal);
         Assert.NotNull(normal.Template!.FindName("PART_OuterCircle", normal));
+    }
+
+    [StaFact]
+    public void radioButton_should_centerSelectedIndicator_and_matchReferenceSize_when_checked()
+    {
+        var control = new RadioButtonControl
+        {
+            Content = Resources.PriorityNormal,
+            IsChecked = true
+        };
+        if (Application.Current is null)
+        {
+            var application = new LabSampleManager.Desktop.App();
+            application.InitializeComponent();
+        }
+
+        var window = new Window { Content = control, Width = 320, Height = 100 };
+        window.Show();
+        try
+        {
+            control.UpdateLayout();
+
+            var indicator = Assert.IsType<Grid>(control.Template!.FindName("PART_Indicator", control));
+            var outerCircle = Assert.IsType<Ellipse>(control.Template.FindName("PART_OuterCircle", control));
+            var innerCircle = Assert.IsType<Ellipse>(control.Template.FindName("PART_InnerCircle", control));
+
+            Assert.Equal(22, indicator.Width);
+            Assert.Equal(22, indicator.Height);
+            Assert.Equal(22, indicator.ActualWidth);
+            Assert.Equal(22, indicator.ActualHeight);
+            Assert.Equal(22, outerCircle.Width);
+            Assert.Equal(22, outerCircle.Height);
+            Assert.Equal(10, innerCircle.Width);
+            Assert.Equal(10, innerCircle.Height);
+            Assert.Equal(Visibility.Visible, innerCircle.Visibility);
+
+            var expectedFocusBrush = Assert.IsType<SolidColorBrush>(Application.Current!.TryFindResource("Field.Focus"));
+            var actualOuterStroke = Assert.IsType<SolidColorBrush>(outerCircle.Stroke);
+            Assert.Equal(expectedFocusBrush.Color, actualOuterStroke.Color);
+
+            var outerCenter = outerCircle.TransformToVisual(indicator)
+                .Transform(new Point(outerCircle.ActualWidth / 2, outerCircle.ActualHeight / 2));
+            var innerCenter = innerCircle.TransformToVisual(indicator)
+                .Transform(new Point(innerCircle.ActualWidth / 2, innerCircle.ActualHeight / 2));
+
+            Assert.Equal(outerCenter.X, innerCenter.X, 3);
+            Assert.Equal(outerCenter.Y, innerCenter.Y, 3);
+        }
+        finally
+        {
+            window.Close();
+        }
     }
 
     [StaFact]

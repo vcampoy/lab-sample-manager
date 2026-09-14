@@ -24,19 +24,29 @@
                         x:Name="PART_RadioBorder"
                         Padding="0,6">
                         <StackPanel Orientation="Horizontal">
-                            <Ellipse
-                                x:Name="PART_OuterCircle"
-                                Width="18"
-                                Height="18"
-                                Stroke="{DynamicResource Field.Border}"
-                                StrokeThickness="1.5"/>
-                            <Ellipse
-                                x:Name="PART_InnerCircle"
-                                Width="8"
-                                Height="8"
-                                Fill="{DynamicResource Field.Focus}"
-                                Visibility="Collapsed"
-                                Margin="-13,0,0,0"/>
+                            <Grid
+                                x:Name="PART_Indicator"
+                                Width="22"
+                                Height="22"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <Ellipse
+                                    x:Name="PART_OuterCircle"
+                                    Width="22"
+                                    Height="22"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Stroke="{DynamicResource Field.Border}"
+                                    StrokeThickness="1.5"/>
+                                <Ellipse
+                                    x:Name="PART_InnerCircle"
+                                    Width="10"
+                                    Height="10"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Fill="{DynamicResource Field.Focus}"
+                                    Visibility="Collapsed"/>
+                            </Grid>
                             <ContentPresenter
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"/>
