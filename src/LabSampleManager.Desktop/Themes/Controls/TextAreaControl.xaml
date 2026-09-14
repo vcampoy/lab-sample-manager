@@ -1,3 +1,146 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:LabSampleManager.Desktop.Controls" xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties"><Style TargetType="{x:Type local:TextAreaControl}"><Setter Property="Background" Value="White"/><Setter Property="BorderBrush" Value="{DynamicResource Field.Border}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="Foreground" Value="{DynamicResource Field.Text}"/><Setter Property="Padding" Value="12,10"/><Setter Property="MinHeight" Value="110"/><Setter Property="FocusVisualStyle" Value="{x:Null}"/><Setter Property="AutomationProperties.Name" Value="{Binding Title, RelativeSource={RelativeSource Self}}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type local:TextAreaControl}"><StackPanel><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><TextBlock Text="{TemplateBinding Title}" FontWeight="SemiBold"/><TextBlock x:Name="PART_Indicator" Grid.Column="1" Text="{x:Static resources:Resources.RequiredFieldIndicator}" Foreground="{DynamicResource Field.Error}" Margin="4,0,0,0" Visibility="Collapsed"/><Border x:Name="PART_TextAreaBorder" Grid.ColumnSpan="2" Margin="0,8,0,0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Padding="{TemplateBinding Padding}"><Grid><TextBlock x:Name="PART_Placeholder" Visibility="Collapsed" Text="{TemplateBinding Placeholder}" Foreground="{DynamicResource Field.Muted}" TextWrapping="Wrap" IsHitTestVisible="False"/><ScrollViewer x:Name="PART_ContentHost" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="Disabled"/></Grid></Border><TextBlock Text="{TemplateBinding CharacterCountText}" HorizontalAlignment="Right" Margin="0,5,2,0" Foreground="{DynamicResource Field.Muted}" FontSize="12"/></Grid><TextBlock Text="{TemplateBinding SubTitle}" Margin="0,4,0,0" Foreground="{DynamicResource Field.Muted}" FontSize="12" TextWrapping="Wrap"/></StackPanel><ControlTemplate.Triggers><Trigger Property="Text" Value=""><Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/></Trigger><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter Property="BorderBrush" Value="{DynamicResource Field.Focus}"/></Trigger><Trigger Property="ShowFieldIndicator" Value="True"><Setter TargetName="PART_Indicator" Property="Visibility" Value="Visible"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed"/></Trigger><MultiDataTrigger><MultiDataTrigger.Conditions><Condition Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value=""/></MultiDataTrigger.Conditions><Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/></MultiDataTrigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style></ResourceDictionary>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LabSampleManager.Desktop.Controls"
+    xmlns:resources="clr-namespace:LabSampleManager.Desktop.Properties">
+    <Style TargetType="{x:Type local:TextAreaControl}">
+        <Setter
+            Property="Background"
+            Value="White"/>
+        <Setter
+            Property="BorderBrush"
+            Value="{DynamicResource Field.Border}"/>
+        <Setter
+            Property="BorderThickness"
+            Value="1"/>
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource Field.Text}"/>
+        <Setter
+            Property="Padding"
+            Value="12,10"/>
+        <Setter
+            Property="MinHeight"
+            Value="110"/>
+        <Setter
+            Property="FocusVisualStyle"
+            Value="{x:Null}"/>
+        <Setter
+            Property="AutomationProperties.Name"
+            Value="{Binding Title, RelativeSource={RelativeSource Self}}"/>
 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TextAreaControl}">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
+                            <TextBlock
+                                Text="{TemplateBinding Title}"
+                                FontWeight="SemiBold"/>
+                            <TextBlock
+                                x:Name="PART_Indicator"
+                                Grid.Column="1"
+                                Text="{x:Static resources:Resources.RequiredFieldIndicator}"
+                                Foreground="{DynamicResource Field.Error}"
+                                Margin="4,0,0,0"
+                                Visibility="Collapsed"/>
+
+                            <Border
+                                x:Name="PART_TextAreaBorder"
+                                Grid.ColumnSpan="2"
+                                Margin="0,8,0,0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                Padding="{TemplateBinding Padding}">
+                                <Grid>
+                                    <TextBlock
+                                        x:Name="PART_Placeholder"
+                                        Visibility="Collapsed"
+                                        Text="{TemplateBinding Placeholder}"
+                                        Foreground="{DynamicResource Field.Muted}"
+                                        TextWrapping="Wrap"
+                                        IsHitTestVisible="False"/>
+                                    <ScrollViewer
+                                        x:Name="PART_ContentHost"
+                                        VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                        HorizontalScrollBarVisibility="Disabled"/>
+                                </Grid>
+                            </Border>
+
+                            <TextBlock
+                                Text="{TemplateBinding CharacterCountText}"
+                                HorizontalAlignment="Right"
+                                Margin="0,5,2,0"
+                                Foreground="{DynamicResource Field.Muted}"
+                                FontSize="12"/>
+                        </Grid>
+
+                        <TextBlock
+                            Text="{TemplateBinding SubTitle}"
+                            Margin="0,4,0,0"
+                            Foreground="{DynamicResource Field.Muted}"
+                            FontSize="12"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="Text"
+                            Value="">
+                            <Setter
+                                TargetName="PART_Placeholder"
+                                Property="Visibility"
+                                Value="Visible"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="IsKeyboardFocusWithin"
+                            Value="True">
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{DynamicResource Field.Focus}"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="ShowFieldIndicator"
+                            Value="True">
+                            <Setter
+                                TargetName="PART_Indicator"
+                                Property="Visibility"
+                                Value="Visible"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="IsEnabled"
+                            Value="False">
+                            <Setter
+                                TargetName="PART_Indicator"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                    Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Value=""/>
+                            </MultiDataTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_Placeholder"
+                                Property="Visibility"
+                                Value="Visible"/>
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

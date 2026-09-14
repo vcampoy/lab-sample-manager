@@ -1,253 +1,515 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:LabSampleManager.Desktop.Controls">
-    <local:IconSpacingConverter x:Key="ButtonControlIconSpacingConverter" />
-        <SolidColorBrush x:Key="Button.Main.Background" Color="#1768D7" />
-        <SolidColorBrush x:Key="Button.Main.BorderBrush" Color="#1768D7" />
-        <SolidColorBrush x:Key="Button.Main.Foreground" Color="White" />
-        <SolidColorBrush x:Key="Button.Main.HoverBackground" Color="#0B63B6" />
-        <SolidColorBrush x:Key="Button.Main.PressedBackground" Color="#084D92" />
-        <SolidColorBrush x:Key="Button.Secondary.Background" Color="White" />
-        <SolidColorBrush x:Key="Button.Secondary.BorderBrush" Color="#8CBDF0" />
-        <SolidColorBrush x:Key="Button.Secondary.Foreground" Color="#0B63B6" />
-        <SolidColorBrush x:Key="Button.Secondary.HoverBackground" Color="#EDF6FE" />
-        <SolidColorBrush x:Key="Button.Secondary.PressedBackground" Color="#DCEBFA" />
-        <SolidColorBrush x:Key="Button.Cancel.Background" Color="#FEF4F6" />
-        <SolidColorBrush x:Key="Button.Cancel.BorderBrush" Color="#EF4452" />
-        <SolidColorBrush x:Key="Button.Cancel.Foreground" Color="#D70015" />
-        <SolidColorBrush x:Key="Button.Cancel.HoverBackground" Color="#FDE7EA" />
-        <SolidColorBrush x:Key="Button.Cancel.PressedBackground" Color="#FAD1D7" />
-        <SolidColorBrush x:Key="Button.View.Background" Color="#EDF6FE" />
-        <SolidColorBrush x:Key="Button.View.BorderBrush" Color="#8CBDF0" />
-        <SolidColorBrush x:Key="Button.View.Foreground" Color="#0B63B6" />
-        <SolidColorBrush x:Key="Button.View.HoverBackground" Color="#DCEBFA" />
-        <SolidColorBrush x:Key="Button.View.PressedBackground" Color="#C8E1F8" />
-    <SolidColorBrush x:Key="Button.Focus.BorderBrush" Color="#142033" />
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LabSampleManager.Desktop.Controls">
+    <local:IconSpacingConverter x:Key="ButtonControlIconSpacingConverter"/>
+    <SolidColorBrush
+        x:Key="Button.Main.Background"
+        Color="#1768D7"/>
+    <SolidColorBrush
+        x:Key="Button.Main.BorderBrush"
+        Color="#1768D7"/>
+    <SolidColorBrush
+        x:Key="Button.Main.Foreground"
+        Color="White"/>
+    <SolidColorBrush
+        x:Key="Button.Main.HoverBackground"
+        Color="#0B63B6"/>
+    <SolidColorBrush
+        x:Key="Button.Main.PressedBackground"
+        Color="#084D92"/>
+    <SolidColorBrush
+        x:Key="Button.Secondary.Background"
+        Color="White"/>
+    <SolidColorBrush
+        x:Key="Button.Secondary.BorderBrush"
+        Color="#8CBDF0"/>
+    <SolidColorBrush
+        x:Key="Button.Secondary.Foreground"
+        Color="#0B63B6"/>
+    <SolidColorBrush
+        x:Key="Button.Secondary.HoverBackground"
+        Color="#EDF6FE"/>
+    <SolidColorBrush
+        x:Key="Button.Secondary.PressedBackground"
+        Color="#DCEBFA"/>
+    <SolidColorBrush
+        x:Key="Button.Cancel.Background"
+        Color="#FEF4F6"/>
+    <SolidColorBrush
+        x:Key="Button.Cancel.BorderBrush"
+        Color="#EF4452"/>
+    <SolidColorBrush
+        x:Key="Button.Cancel.Foreground"
+        Color="#D70015"/>
+    <SolidColorBrush
+        x:Key="Button.Cancel.HoverBackground"
+        Color="#FDE7EA"/>
+    <SolidColorBrush
+        x:Key="Button.Cancel.PressedBackground"
+        Color="#FAD1D7"/>
+    <SolidColorBrush
+        x:Key="Button.View.Background"
+        Color="#EDF6FE"/>
+    <SolidColorBrush
+        x:Key="Button.View.BorderBrush"
+        Color="#8CBDF0"/>
+    <SolidColorBrush
+        x:Key="Button.View.Foreground"
+        Color="#0B63B6"/>
+    <SolidColorBrush
+        x:Key="Button.View.HoverBackground"
+        Color="#DCEBFA"/>
+    <SolidColorBrush
+        x:Key="Button.View.PressedBackground"
+        Color="#C8E1F8"/>
+    <SolidColorBrush
+        x:Key="Button.Focus.BorderBrush"
+        Color="#142033"/>
 
     <Style TargetType="{x:Type local:ButtonControl}">
-        <Setter Property="Background" Value="{DynamicResource Button.Main.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Button.Main.BorderBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource Button.Main.Foreground}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Padding" Value="16,8" />
-        <Setter Property="MinHeight" Value="40" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="AutomationProperties.Name"
-                Value="{Binding Title, RelativeSource={RelativeSource Self}}" />
+        <Setter
+            Property="Background"
+            Value="{DynamicResource Button.Main.Background}"/>
+        <Setter
+            Property="BorderBrush"
+            Value="{DynamicResource Button.Main.BorderBrush}"/>
+        <Setter
+            Property="BorderThickness"
+            Value="1"/>
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource Button.Main.Foreground}"/>
+        <Setter
+            Property="FontSize"
+            Value="14"/>
+        <Setter
+            Property="FontWeight"
+            Value="SemiBold"/>
+        <Setter
+            Property="Padding"
+            Value="16,8"/>
+        <Setter
+            Property="MinHeight"
+            Value="40"/>
+        <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center"/>
+        <Setter
+            Property="VerticalContentAlignment"
+            Value="Center"/>
+        <Setter
+            Property="FocusVisualStyle"
+            Value="{x:Null}"/>
+        <Setter
+            Property="AutomationProperties.Name"
+            Value="{Binding Title, RelativeSource={RelativeSource Self}}"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ButtonControl}">
                     <Grid>
-                        <Border x:Name="PART_ButtonBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                Padding="{TemplateBinding Padding}"
-                                SnapsToDevicePixels="True">
-                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Border
+                            x:Name="PART_ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                            <Grid
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Rectangle x:Name="PART_LeftIcon"
-                                           Width="{TemplateBinding IconSize}"
-                                           Height="{TemplateBinding IconSize}"
-                                           Fill="{TemplateBinding Foreground}"
-                                           Stretch="Uniform">
+                                <Rectangle
+                                    x:Name="PART_LeftIcon"
+                                    Width="{TemplateBinding IconSize}"
+                                    Height="{TemplateBinding IconSize}"
+                                    Fill="{TemplateBinding Foreground}"
+                                    Stretch="Uniform">
                                     <Rectangle.Margin>
-                                        <MultiBinding Converter="{StaticResource ButtonControlIconSpacingConverter}"
-                                                      ConverterParameter="Left">
-                                            <Binding Path="IconSpacing" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <MultiBinding
+                                            Converter="{StaticResource ButtonControlIconSpacingConverter}"
+                                            ConverterParameter="Left">
+                                            <Binding
+                                                Path="IconSpacing"
+                                                RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </Rectangle.Margin>
+
                                     <Rectangle.OpacityMask>
-                                        <ImageBrush ImageSource="{Binding IconSource, RelativeSource={RelativeSource TemplatedParent}}"
-                                                    Stretch="Uniform" />
+                                        <ImageBrush
+                                            ImageSource="{Binding IconSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Stretch="Uniform"/>
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
-                                <Image x:Name="PART_LeftOriginalIcon"
-                                       Width="{TemplateBinding IconSize}"
-                                       Height="{TemplateBinding IconSize}"
-                                       Source="{TemplateBinding IconSource}"
-                                       Stretch="Uniform"
-                                       Visibility="Collapsed">
+
+                                <Image
+                                    x:Name="PART_LeftOriginalIcon"
+                                    Width="{TemplateBinding IconSize}"
+                                    Height="{TemplateBinding IconSize}"
+                                    Source="{TemplateBinding IconSource}"
+                                    Stretch="Uniform"
+                                    Visibility="Collapsed">
                                     <Image.Margin>
-                                        <MultiBinding Converter="{StaticResource ButtonControlIconSpacingConverter}"
-                                                      ConverterParameter="Left">
-                                            <Binding Path="IconSpacing" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <MultiBinding
+                                            Converter="{StaticResource ButtonControlIconSpacingConverter}"
+                                            ConverterParameter="Left">
+                                            <Binding
+                                                Path="IconSpacing"
+                                                RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </Image.Margin>
                                 </Image>
 
-                                <TextBlock x:Name="PART_Title"
-                                           Grid.Column="1"
-                                           VerticalAlignment="Center"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontSize="{TemplateBinding FontSize}"
-                                           FontWeight="{TemplateBinding FontWeight}"
-                                           Text="{TemplateBinding Title}"
-                                           TextAlignment="Center"
-                                           TextTrimming="CharacterEllipsis"
-                                           TextWrapping="NoWrap" />
+                                <TextBlock
+                                    x:Name="PART_Title"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    FontWeight="{TemplateBinding FontWeight}"
+                                    Text="{TemplateBinding Title}"
+                                    TextAlignment="Center"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap"/>
 
-                                <Rectangle x:Name="PART_RightIcon"
-                                           Grid.Column="2"
-                                           Width="{TemplateBinding IconSize}"
-                                           Height="{TemplateBinding IconSize}"
-                                           Fill="{TemplateBinding Foreground}"
-                                           Stretch="Uniform">
+                                <Rectangle
+                                    x:Name="PART_RightIcon"
+                                    Grid.Column="2"
+                                    Width="{TemplateBinding IconSize}"
+                                    Height="{TemplateBinding IconSize}"
+                                    Fill="{TemplateBinding Foreground}"
+                                    Stretch="Uniform">
                                     <Rectangle.Margin>
-                                        <MultiBinding Converter="{StaticResource ButtonControlIconSpacingConverter}"
-                                                      ConverterParameter="Right">
-                                            <Binding Path="IconSpacing" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <MultiBinding
+                                            Converter="{StaticResource ButtonControlIconSpacingConverter}"
+                                            ConverterParameter="Right">
+                                            <Binding
+                                                Path="IconSpacing"
+                                                RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </Rectangle.Margin>
+
                                     <Rectangle.OpacityMask>
-                                        <ImageBrush ImageSource="{Binding IconSource, RelativeSource={RelativeSource TemplatedParent}}"
-                                                    Stretch="Uniform" />
+                                        <ImageBrush
+                                            ImageSource="{Binding IconSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Stretch="Uniform"/>
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
-                                <Image x:Name="PART_RightOriginalIcon"
-                                       Grid.Column="2"
-                                       Width="{TemplateBinding IconSize}"
-                                       Height="{TemplateBinding IconSize}"
-                                       Source="{TemplateBinding IconSource}"
-                                       Stretch="Uniform"
-                                       Visibility="Collapsed">
+
+                                <Image
+                                    x:Name="PART_RightOriginalIcon"
+                                    Grid.Column="2"
+                                    Width="{TemplateBinding IconSize}"
+                                    Height="{TemplateBinding IconSize}"
+                                    Source="{TemplateBinding IconSource}"
+                                    Stretch="Uniform"
+                                    Visibility="Collapsed">
                                     <Image.Margin>
-                                        <MultiBinding Converter="{StaticResource ButtonControlIconSpacingConverter}"
-                                                      ConverterParameter="Right">
-                                            <Binding Path="IconSpacing" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <MultiBinding
+                                            Converter="{StaticResource ButtonControlIconSpacingConverter}"
+                                            ConverterParameter="Right">
+                                            <Binding
+                                                Path="IconSpacing"
+                                                RelativeSource="{RelativeSource TemplatedParent}"/>
                                         </MultiBinding>
                                     </Image.Margin>
                                 </Image>
                             </Grid>
                         </Border>
 
-                        <Border x:Name="PART_FocusBorder"
-                                Margin="-2"
-                                BorderBrush="{DynamicResource Button.Focus.BorderBrush}"
-                                BorderThickness="2"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                IsHitTestVisible="False"
-                                Visibility="Collapsed" />
+                        <Border
+                            x:Name="PART_FocusBorder"
+                            Margin="-2"
+                            BorderBrush="{DynamicResource Button.Focus.BorderBrush}"
+                            BorderThickness="2"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsHitTestVisible="False"
+                            Visibility="Collapsed"/>
                     </Grid>
+
                     <ControlTemplate.Triggers>
-                        <Trigger Property="ButtonType" Value="Main">
-                            <Setter Property="Background" Value="{DynamicResource Button.Main.Background}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Button.Main.BorderBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource Button.Main.Foreground}" />
-                        </Trigger>
-                        <Trigger Property="ButtonType" Value="Secondary">
-                            <Setter Property="Background" Value="{DynamicResource Button.Secondary.Background}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Button.Secondary.BorderBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource Button.Secondary.Foreground}" />
-                        </Trigger>
-                        <Trigger Property="ButtonType" Value="Cancel">
-                            <Setter Property="Background" Value="{DynamicResource Button.Cancel.Background}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Button.Cancel.BorderBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource Button.Cancel.Foreground}" />
-                        </Trigger>
-                        <Trigger Property="ButtonType" Value="View">
-                            <Setter Property="Background" Value="{DynamicResource Button.View.Background}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Button.View.BorderBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource Button.View.Foreground}" />
+                        <Trigger
+                            Property="ButtonType"
+                            Value="Main">
+                            <Setter
+                                Property="Background"
+                                Value="{DynamicResource Button.Main.Background}"/>
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.Main.BorderBrush}"/>
+                            <Setter
+                                Property="Foreground"
+                                Value="{DynamicResource Button.Main.Foreground}"/>
                         </Trigger>
 
-                        <Trigger Property="TintIcon" Value="False">
-                            <Setter TargetName="PART_LeftIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_RightIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_LeftOriginalIcon" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_RightOriginalIcon" Property="Visibility" Value="Visible" />
+                        <Trigger
+                            Property="ButtonType"
+                            Value="Secondary">
+                            <Setter
+                                Property="Background"
+                                Value="{DynamicResource Button.Secondary.Background}"/>
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.Secondary.BorderBrush}"/>
+                            <Setter
+                                Property="Foreground"
+                                Value="{DynamicResource Button.Secondary.Foreground}"/>
                         </Trigger>
-                        <Trigger Property="IconPosition" Value="Left">
-                            <Setter TargetName="PART_RightIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_RightOriginalIcon" Property="Visibility" Value="Collapsed" />
+
+                        <Trigger
+                            Property="ButtonType"
+                            Value="Cancel">
+                            <Setter
+                                Property="Background"
+                                Value="{DynamicResource Button.Cancel.Background}"/>
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.Cancel.BorderBrush}"/>
+                            <Setter
+                                Property="Foreground"
+                                Value="{DynamicResource Button.Cancel.Foreground}"/>
                         </Trigger>
-                        <Trigger Property="IconPosition" Value="Right">
-                            <Setter TargetName="PART_LeftIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_LeftOriginalIcon" Property="Visibility" Value="Collapsed" />
+
+                        <Trigger
+                            Property="ButtonType"
+                            Value="View">
+                            <Setter
+                                Property="Background"
+                                Value="{DynamicResource Button.View.Background}"/>
+                            <Setter
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.View.BorderBrush}"/>
+                            <Setter
+                                Property="Foreground"
+                                Value="{DynamicResource Button.View.Foreground}"/>
                         </Trigger>
-                        <Trigger Property="IconSource" Value="{x:Null}">
-                            <Setter TargetName="PART_LeftIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_RightIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_LeftOriginalIcon" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_RightOriginalIcon" Property="Visibility" Value="Collapsed" />
+
+                        <Trigger
+                            Property="TintIcon"
+                            Value="False">
+                            <Setter
+                                TargetName="PART_LeftIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_RightIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_LeftOriginalIcon"
+                                Property="Visibility"
+                                Value="Visible"/>
+                            <Setter
+                                TargetName="PART_RightOriginalIcon"
+                                Property="Visibility"
+                                Value="Visible"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="IconPosition"
+                            Value="Left">
+                            <Setter
+                                TargetName="PART_RightIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_RightOriginalIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="IconPosition"
+                            Value="Right">
+                            <Setter
+                                TargetName="PART_LeftIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_LeftOriginalIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger
+                            Property="IconSource"
+                            Value="{x:Null}">
+                            <Setter
+                                TargetName="PART_LeftIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_RightIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_LeftOriginalIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
+                            <Setter
+                                TargetName="PART_RightOriginalIcon"
+                                Property="Visibility"
+                                Value="Collapsed"/>
                         </Trigger>
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Main" />
-                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Main"/>
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Main.HoverBackground}" />
-                            <Setter TargetName="PART_ButtonBorder" Property="BorderBrush" Value="{DynamicResource Button.Main.HoverBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Secondary" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Secondary.HoverBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Cancel" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Cancel.HoverBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="View" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.View.HoverBackground}" />
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Main.HoverBackground}"/>
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.Main.HoverBackground}"/>
                         </MultiTrigger>
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Main" />
-                                <Condition Property="IsPressed" Value="True" />
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Secondary"/>
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Main.PressedBackground}" />
-                            <Setter TargetName="PART_ButtonBorder" Property="BorderBrush" Value="{DynamicResource Button.Main.PressedBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Secondary" />
-                                <Condition Property="IsPressed" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Secondary.PressedBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="Cancel" />
-                                <Condition Property="IsPressed" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.Cancel.PressedBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ButtonType" Value="View" />
-                                <Condition Property="IsPressed" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ButtonBorder" Property="Background" Value="{DynamicResource Button.View.PressedBackground}" />
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Secondary.HoverBackground}"/>
                         </MultiTrigger>
 
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.45" />
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Cancel"/>
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Cancel.HoverBackground}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="View"/>
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.View.HoverBackground}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Main"/>
+                                <Condition
+                                    Property="IsPressed"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Main.PressedBackground}"/>
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="BorderBrush"
+                                Value="{DynamicResource Button.Main.PressedBackground}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Secondary"/>
+                                <Condition
+                                    Property="IsPressed"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Secondary.PressedBackground}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="Cancel"/>
+                                <Condition
+                                    Property="IsPressed"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.Cancel.PressedBackground}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition
+                                    Property="ButtonType"
+                                    Value="View"/>
+                                <Condition
+                                    Property="IsPressed"
+                                    Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter
+                                TargetName="PART_ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource Button.View.PressedBackground}"/>
+                        </MultiTrigger>
+
+                        <Trigger
+                            Property="IsEnabled"
+                            Value="False">
+                            <Setter
+                                Property="Opacity"
+                                Value="0.45"/>
                         </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="PART_FocusBorder" Property="Visibility" Value="Visible" />
+
+                        <Trigger
+                            Property="IsKeyboardFocused"
+                            Value="True">
+                            <Setter
+                                TargetName="PART_FocusBorder"
+                                Property="Visibility"
+                                Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
